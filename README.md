@@ -1,12 +1,12 @@
-# SocialCrow
+## SocialCrow
 ___
 
 A web application for sharing files with added social networking features
 
-# Authors
+## Authors
 ___
 
 Swaroop SM
 
-# Licence: GPL v3.0
+## Licence: GPL v3.0
 ___
