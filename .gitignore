@@ -8,3 +8,5 @@
 /config/database.yml
 *~
 /bootstrap
+*.coffee
+*.scss
