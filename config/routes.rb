@@ -1,6 +1,7 @@
 SocialCrow::Application.routes.draw do
 	
 	root to: 'users#new'
+	resources :users
 	match '/signup', to: 'users#new'
 	
   # The priority is based upon order of creation:
