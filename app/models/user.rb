@@ -8,9 +8,13 @@
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #  password_digest :string(255)
+#  username        :string(255)
 #
 
 class User < ActiveRecord::Base
-	attr_accessible :name, :email, :password, :password_confirmation
+	def to_param
+    username
+  end
+	attr_accessible :name, :email, :password, :password_confirmation, :username
   has_secure_password
 end
