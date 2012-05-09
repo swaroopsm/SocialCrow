@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
 		if user && user.authenticate(params[:session][:password])
 			redirect_to "/@/#{params[:session][:username]}"
 		else
-			flash[:error] = "Login failed! Please try again!"
-			redirect_to "/login"
+			flash.now[:error] = "Login failed! Please try again!"
+			render 'new'
 		end
 	end
 	
