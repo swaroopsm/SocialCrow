@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 	def create
 		user=User.find_by_username(params[:session][:username])
 		if user && user.authenticate(params[:session][:password])
+			sign_in user
 			redirect_to "/@/#{params[:session][:username]}"
 		else
 			flash.now[:error] = "Login failed! Please try again!"
