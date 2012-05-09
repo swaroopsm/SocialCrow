@@ -1239,7 +1239,7 @@ select:focus:required:invalid:focus {
 
 .help-block,
 .help-inline {
-  color: #555555;
+  color: #777;
 }
 
 .help-block {
