@@ -10,6 +10,7 @@ SocialCrow::Application.routes.draw do
 	
 	match '/login', to: 'sessions#new'
 	match '/signout', to: 'sessions#destroy'
+	match '/session', to: 'session#create'
 	
   # The priority is based upon order of creation:
   # first created -> highest priority.
