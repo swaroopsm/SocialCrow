@@ -2,6 +2,7 @@ SocialCrow::Application.routes.draw do
 	
 	root to: 'users#new'
 	
+	match '/users', to: 'users#create'
 	match '/signup', to: 'users#new'
 	match '/@/:username', to: 'users#show'
 	
