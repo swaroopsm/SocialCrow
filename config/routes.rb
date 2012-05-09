@@ -12,6 +12,8 @@ SocialCrow::Application.routes.draw do
 	match '/signout', to: 'sessions#destroy'
 	match '/session', to: 'session#create'
 	
+	match "/sessions" => redirect("/login")
+	
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
