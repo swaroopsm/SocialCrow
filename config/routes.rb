@@ -3,7 +3,7 @@ SocialCrow::Application.routes.draw do
 	root to: 'users#new'
 	
 	match '/signup', to: 'users#new'
-	match '/@/:id', to: 'users#show'
+	match '/@/:username', to: 'users#show'
 	
   # The priority is based upon order of creation:
   # first created -> highest priority.
