@@ -18,4 +18,10 @@ class User < ActiveRecord::Base
   end
 	attr_accessible :name, :email, :password, :password_confirmation, :username
   has_secure_password
+  
+  private
+  
+  	def create_remember_token
+  		self.remember_token=SecureRandom.urlsafe_base64
+  	end
 end
