@@ -11,6 +11,7 @@ SocialCrow::Application.routes.draw do
 	match '/login', to: 'sessions#new'
 	match '/signout', to: 'sessions#destroy'
 	match '/session', to: 'session#create'
+	match '/logout', to: 'sessions#destroy'
 	
 	match "/sessions" => redirect("/login")
 	
