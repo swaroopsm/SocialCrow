@@ -6,10 +6,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand socialcrow-font" href="/">Social Crow</a>
+          <% if signed_in? %>
+          <%= link_to "SocialCrow", "/@/#{current_user.username}", :class => "brand" %>
+         	<% else %>
+         		<a class="brand socialcrow-font" href="/">Social Crow</a>
+         	<% end %>
           <ul class="nav  pull-right">
           	<% if signed_in? %>
-          		<li><h5><a href="#"><button class="btn btn-info">Logout!</button></a></h5></li>
+          		<li><h5><a href="/logout"><button class="btn btn-info">Logout!</button></a></h5></li>
           	<% else %>
           		<li><h5><a href="/login"><button class="btn btn-info">Login</button></a></h5></li>
           	<% end %>
