@@ -17,8 +17,7 @@ class UsersController < ApplicationController
 		  	}
  	 	  end
  	  end
- 	  else
- 	  	redirect_to "/"
+ 	  
   end
   
   def create
