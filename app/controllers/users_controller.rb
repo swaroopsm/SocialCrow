@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   
   def show
   	@user=User.find_by_username(params[:username])
+  if @user
   	if signed_in?
   		respond_to do |format|
 		 	 format.html
@@ -16,9 +17,11 @@ class UsersController < ApplicationController
 		  	  render :json => @user.to_json
 		  	}
  	 	  end
- 	  end
- 	  
-  end
+ 	 	 end
+ 	 else
+ 	 	render 'public/404.html'
+	end
+end
   
   def create
   	@user=User.new(params[:user])
