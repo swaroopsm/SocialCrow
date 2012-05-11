@@ -16,6 +16,7 @@ SocialCrow::Application.routes.draw do
 	match "/sessions" => redirect("/login")
 	
 	match "/@/:username/profile", to: 'users#profile'
+	match "/@/:username/profile/settings", to: 'users#edit'
 	
   # The priority is based upon order of creation:
   # first created -> highest priority.
