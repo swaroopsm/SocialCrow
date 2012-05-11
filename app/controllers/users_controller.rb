@@ -13,8 +13,8 @@ class UsersController < ApplicationController
   
   def create
   	@user=User.new(params[:user])
-  	a=params[:username]
   	if @user.save
+  		 sign_in @user 
   		 flash[:success] = "Welcome to SocialCrow! Please verify your email address!"
   		 redirect_to "/@/#{params[:user][:username]}"
   	else
