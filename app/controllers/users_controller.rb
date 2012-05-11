@@ -35,7 +35,12 @@ end
   end
   
   def edit
-  	@user=User.find_by_id(params[:id])
+  	if signed_in?
+	  	@user=User.find_by_id(params[:id])
+	  else
+	  	flash[:notice] = "Please login with your SocialCrow account in order to view the requested page"
+	  	redirect_to '/login'
+	  end
   end
   
   def profile
