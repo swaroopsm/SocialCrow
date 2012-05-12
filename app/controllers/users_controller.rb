@@ -51,8 +51,8 @@ end
   	@user=User.find_by_username(params[:username])
   	if @user.update_attributes(params[:user])
   		sign_in @user
-  		flash[:success]="Your information has been updated!"
-  		redirect_to '/'
+  		flash[:success] = "Profile settings updated!"
+  		redirect_to "/@/#{current_user.username}"
   	else
   		render 'edit'
   	end
