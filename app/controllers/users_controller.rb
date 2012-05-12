@@ -36,7 +36,7 @@ end
   
   def edit
   	if signed_in?
-	  	@user=User.find_by_username(params[:username])
+	  	@user=User.find_by_id(params[:id])
 	  else
 	  	flash[:notice] = "Please login with your SocialCrow account in order to view the requested page"
 	  	redirect_to '/login'
@@ -45,16 +45,5 @@ end
   
   def profile
   	@user=User.find_by_username(params[:username])
-  end
-  
-  def update
-  	@user=User.find_by_username(params[:username])
-  	if @user.update_attributes(params[:user])
-  		sign_in @user
-  		flash[:success]="Your information has been updated!"
-  		redirect_to '/'
-  	else
-  		render 'edit'
-  	end
   end
 end
