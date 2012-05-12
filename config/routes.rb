@@ -2,9 +2,12 @@ SocialCrow::Application.routes.draw do
 	
 	root to: 'users#new'
 	
-	match '/users', to: 'users#create'
+
 	match '/signup', to: 'users#new'
 	match '/@/:username', to: 'users#show'
+	match "/@/:username/profile/settings", to: 'users#edit'
+
+	put "/user/:username", to: 'users#update'
 	
 	resources :sessions, only: [:new, :create, :destroy]
 	
@@ -16,8 +19,8 @@ SocialCrow::Application.routes.draw do
 	match "/sessions" => redirect("/login")
 	
 	match "/@/:username/profile", to: 'users#profile'
-	match "/@/:username/profile/settings", to: 'users#edit'
 	
+	match "/user/:username", to: 'users#edit'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
