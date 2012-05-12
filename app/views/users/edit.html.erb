@@ -1,1 +1,46 @@
 <%= provide(:title, "Edit Profile") %>
+<h1>Profile Settings</h1>
+<hr>
+<div class="row">
+	<div class="span6">
+		<%= form_for(@user) do |f| %>
+      <div class="control-group">
+      <h4><%= f.label :name,"Your Name: " %></h4>
+      <div class="controls">
+        <%= f.text_field :name,{:class => 'span4'} %>
+        <p class="help-block">Your Fullname</p>
+        <br/>
+      </div>
+      <h4><%= f.label :username,"Your Name: " %></h4>
+      <div class="controls">
+        <%= f.text_field :username,{:class => 'span4'} %>
+        <p class="help-block">Your unique username. only a-z,0-9 and _</p>
+        <br/>
+      </div>
+      <h4><%= f.label :email,"Your Email: " %></h4>
+      <div class="controls">
+        <%= f.text_field :email,{:class => 'span4'} %>
+        <p class="help-block">Eg.: user@example.com</p>
+        <br/>
+      </div>
+      <h4><%= f.label :password,"Your Password: " %></h4>
+      <div class="controls">
+        <%= f.password_field :password,{:class => 'span4'} %>
+        <p class="help-block"></p>
+        <br/>
+      </div>
+      <h4><%= f.label :password_confirmation,"Confirm Password: " %></h4>
+      <div class="controls">
+        <%= f.password_field :password_confirmation,{:class => 'span4'} %>
+        <p class="help-block"></p>
+        <br/>
+      </div>
+      <%= f.submit "Update Profile", class: "btn btn-large btn-success" %>
+    </div>
+    <% end %>
+	</div>
+	<div class="span2">
+    <%= gravatar_for @user %>
+    <a href="http://gravatar.com/emails">change</a>
+   </div>
+</div>
