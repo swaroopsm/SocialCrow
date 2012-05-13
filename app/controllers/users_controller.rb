@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_filter :signed_in_user, only: [:edit, :update]
+	before_filter :find_username, only: [:edit,:update,:show,:profile]
 	
   def new
   	if signed_in?
@@ -10,7 +11,6 @@ class UsersController < ApplicationController
   end
   
   def show
-  	@user=User.find_by_username(params[:username])
   if @user
   	if signed_in?
   		respond_to do |format|
@@ -37,20 +37,13 @@ end
   end
   
   def edit
-  	if signed_in?
-	  	@user=User.find_by_username(params[:username])
-	  else
-	  	flash[:notice] = "Please login with your SocialCrow account in order to view the requested page"
-	  	redirect_to '/login'
-	  end
   end
   
   def profile
-  	@user=User.find_by_username(params[:username])
+  	
   end
   
   def update
-  	@user=User.find_by_username(params[:username])
   	if @user.update_attributes(params[:user])
   		sign_in @user
   		flash[:success] = "Profile settings updated!"
@@ -64,5 +57,9 @@ end
 
     def signed_in_user
       redirect_to "/login", notice: "Please login with your SocialCrow account in order to view the requested page" unless signed_in?
+    end
+    
+    def find_username
+    	@user=User.find_by_username(params[:username])
     end
 end
