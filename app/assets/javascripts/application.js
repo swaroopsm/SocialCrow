@@ -1837,3 +1837,16 @@
   })
 
 }(window.jQuery);
+
+/* SocialCrow import js
+  * ================== */
+	$("#gravatar-thumbnail").mouseover(function(){
+		$(this).css('-webkit-transform','rotate(-10deg)');
+		$(this).css('zoom','110%');
+		$(this).css('-moz-transform','rotate(-10deg)');
+	});
+	$("#gravatar-thumbnail").mouseout(function(){
+		$(this).css('-webkit-transform','rotate(0deg)');
+		$(this).css('zoom','100%');
+		$(this).css('-moz-transform','rotate(0deg)');
+	});
