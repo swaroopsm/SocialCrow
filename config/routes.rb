@@ -24,7 +24,9 @@ SocialCrow::Application.routes.draw do
 	
 	match "/user/:username", to: 'users#edit'
 	
-	resources :users, only: [:edit]
+	resources :users
+	
+	match '/users/new' => redirect("/signup")
 	
   # The priority is based upon order of creation:
   # first created -> highest priority.
