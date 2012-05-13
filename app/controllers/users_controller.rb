@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	before_filter :signed_in_user, only: [:edit, :update]
+	
   def new
   	if signed_in?
   		redirect_to "/@/#{current_user.username}"
@@ -57,4 +59,10 @@ end
   		render 'edit'
   	end
   end
+  
+  private
+
+    def signed_in_user
+      redirect_to "/login", notice: "Please login with your SocialCrow account in order to view the requested page" unless signed_in?
+    end
 end
