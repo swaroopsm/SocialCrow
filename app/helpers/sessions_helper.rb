@@ -31,6 +31,7 @@ module SessionsHelper
 			redirect_to "/@/#{current_user.username}"
 		else
 			redirect_to session[:return_to]
+			session.delete(:return_to)
 		end
 	end
 	
