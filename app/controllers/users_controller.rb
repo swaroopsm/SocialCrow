@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	before_filter :signed_in_user, only: [:edit, :update]
-	before_filter :find_username, only: [:edit,:update,:show,:profile]
+	before_filter :find_username, only: [:edit,:update,:show,:profile,:current_user]
+	before_filter :correct_user, only: [:edit,:update]
 	
   def new
   	if signed_in?
@@ -56,10 +57,22 @@ end
   private
 
     def signed_in_user
-      redirect_to "/login", notice: "Please login with your SocialCrow account in order to view the requested page" unless signed_in?
+      if !signed_in?
+      	store_location
+      	redirect_to "/login"
+      end
     end
     
     def find_username
     	@user=User.find_by_username(params[:username])
     end
+    
+    def correct_user
+    	if current_user.username==@user.username
+  		
+  		else
+  			redirect_to "/@/#{current_user.username}"
+  		end
+    end
+    
 end
