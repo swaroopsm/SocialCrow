@@ -22,6 +22,22 @@ module SessionsHelper
   	cookies.delete(:remember_token)
   end
 
+	def store_location
+		session[:return_to] = request.fullpath
+	end
+	
+	def redirect_back_to
+		if session[:return_to]==nil
+			redirect_to "/@/#{current_user.username}"
+		else
+			redirect_to session[:return_to]
+		end
+	end
+	
+	def current_user?(user)
+		@current_user=user
+	end
+	
   private
 
     def user_from_remember_token
